@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ByteComputerTest.Core.Candidate>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+@if (!Model.Any())
+{
+    <p>No results</p>
+}
+else
+{
+    <table class="table table-condensed table-bordered">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                First Name Candidate
+            </th>
+            <th>
+                Last Name Candidate
+            </th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>SelectedDegree</th>
+            <th>CV filename</th>
+        </tr>
+        <tbody>
+        @foreach (var candidate in Model)
+        {
+
+            <tr>
+                <td>@candidate.Id</td>
+
+                <td>@candidate.FirstName</td>
+                <td>@candidate.LastName</td>
+                
+                <td>@candidate.Email</td>
+                <td>@candidate.Mobile</td>
+                <td>@candidate.SelectedDegree</td>
+                <td>@candidate.CVFilename</td>
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@candidate.Id">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@candidate.Id">Delete</a>
+                    </td>
+            </tr>
+        }
+
+     
+        </tbody>
+    </table>
+}
+
+<p>
+    <a class="btn btn-primary" asp-action="Add">Add new candidate</a>
+</p>
+
+
+

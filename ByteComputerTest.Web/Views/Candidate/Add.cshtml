@@ -1,0 +1,56 @@
+﻿@model ByteComputerTest.Core.Candidate
+
+@{
+}
+<div class="col-md-12">
+    <form method="post" asp-controller="Candidate" asp-action="Add" enctype="multipart/form-data"  >
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CreationTime" />
+
+
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+        <div class="mb-3">
+
+            <label asp-for="FirstName" class="control-label"></label>
+            <input asp-for="FirstName" class="form-control" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Mobile" class="control-label"></label>
+            <input asp-for="Mobile" class="form-control" />
+            <span asp-validation-for="Mobile" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="SelectedDegree" class="control-label"></label>
+           
+            <input asp-for="SelectedDegree" class="form-control" type="" />
+            <span asp-validation-for="SelectedDegree" class="text-danger"></span>
+        </div>
+        <div class="mb-3"> Upload Valid extensions .pdf & word <br />
+            <label asp-for="CV" class="control-label"></label>
+
+            <input   type="file" name="file" asp-for="CV">
+
+            <span asp-validation-for="CV" class="text-danger"></span>
+        </div>
+
+
+
+
+        <input type="submit" value="Add Candidate" class="btn btn-primary" />
+
+    </form>
+</div>
+
+<div>
+    <a asp-controller="Candidate" asp-action="Index">Back to overview</a>
+</div>

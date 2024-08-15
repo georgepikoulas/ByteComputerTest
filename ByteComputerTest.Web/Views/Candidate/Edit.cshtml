@@ -1,0 +1,70 @@
+﻿@{
+}
+@model ByteComputerTest.Core.Candidate
+
+@{
+}
+<div class="col-md-12">
+    <form method="post" asp-controller="Candidate" asp-action="Edit" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CreationTime" />
+        <input type="hidden" asp-for="CV" />
+
+
+
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <label asp-for="Mobile" class="control-label"></label>
+        <input asp-for="Mobile" class="form-control" />
+        <span asp-validation-for="Mobile" class="text-danger"></span>
+        <label asp-for="SelectedDegree" class="control-label"></label>
+
+        @if (Model != null && Model.Degrees != null && Model.Degrees.Count > 0)
+        {
+            <select asp-for="SelectedDegree"
+                    onchange="onFormSelected(this.value)" class="form-control"
+                    asp-items="@new SelectList(Model.Degrees.Select(p=>p.Name))"></select>
+        }
+        else
+        {
+            <input value="No Degrees available for this candidate" class="control-label"></input>
+
+        }
+        @* <input asp-for="SelectedDegree" class="form-control" /> *@
+        <span asp-validation-for="SelectedDegree" class="text-danger"></span>
+        @*  <div class="mb-3">
+        <label asp-for="CV" class="control-label"></label>
+        <input asp-for="CV" class="form-control" />
+        <span asp-validation-for="CV" class="text-danger"></span>
+        </div> *@
+
+        <br />
+        <div>
+        Selected <label asp-for="CVFilename" class="control-label"></label>
+            Upload Valid extensions .pdf & word max 10 MB
+        <input asp-for="CVFilename" >
+        <br />
+     
+
+        <input type="file" name="file" asp-for="CVFilename" />
+
+        <span asp-validation-for="CVFilename" class="text-danger"></span>
+        </div>
+        <input type="submit" value="Update Candidate" class="btn btn-primary" />
+
+    </form>
+</div>
+
+<div>
+    <a asp-controller="Candidate" asp-action="Index">Back to overview</a>
+</div>

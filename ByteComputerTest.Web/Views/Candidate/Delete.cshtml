@@ -1,0 +1,63 @@
+﻿@{
+}
+@model ByteComputerTest.Core.Candidate
+
+@{
+}
+<h2>Delete Candidate @Model?.FirstName  @Model?.LastName     </h2>
+<hr />
+
+@if (ViewData["ErrorMessage"] != null)
+{
+    <p class="text-danger">@ViewData["ErrorMessage"]</p>
+}
+<div class="col-md-12">
+
+
+
+        <label asp-for="Id" class="control-label"></label>
+        <div class="mb-3">
+            @Model?.Id
+            </div>
+
+
+        <label asp-for="LastName" class="control-label"></label>
+        @Model?.LastName
+        <div class="mb-3">
+
+            <label asp-for="FirstName" class="control-label"></label>
+            @Model?.FirstName
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email" class="control-label"></label>
+            @Model?.Email
+        </div>
+        <div class="mb-3">
+            <label asp-for="Mobile" class="control-label"></label>
+            @Model?.Mobile
+        </div>
+        <div class="mb-3">
+            <label asp-for="SelectedDegree" class="control-label"></label>
+            @Model.SelectedDegree
+        </div>
+        <div class="mb-3">
+            <label asp-for="CVFilename" class="control-label"></label>
+        @Model?.CVFilename
+        </div>
+        <label asp-for="CreationTime" class="control-label"></label>
+        <div class="mb-3">
+            @Model?.CreationTime
+        </div>
+
+
+</div>
+
+
+<form method="post" asp-action="Delete">
+    <input type="hidden" asp-for="Id" />
+    <input type="submit" value="Delete Candidate" class="btn btn-danger" />
+</form>
+
+<div>
+    <a asp-controller="Candidate" asp-action="Index">Back to overview</a>
+</div>

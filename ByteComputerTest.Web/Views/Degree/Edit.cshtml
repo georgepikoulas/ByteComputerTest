@@ -1,0 +1,46 @@
+﻿@model ByteComputerTest.Core.Degree
+
+@{
+}
+
+<div class="col-md-12">
+    <form method="post" asp-controller="Degree" asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CreationTime" />
+
+
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+
+        <br />
+        <input type="hidden" asp-for="Candidate" class="form-control" />
+
+
+        <br />
+        <label asp-for="Candidate" class="control-label"></label>
+
+        @Html.DropDownList("CandidateId", @ViewData["Candidates"] as List<SelectListItem>,
+                 "Select One", new { @class = "form-control" })
+
+        @*      @Html.DropDownList("CandidateId", @ViewData["Candidates"] as SelectList, "", new
+        {
+        title = "Pick Batch",
+        onchange = "onFormSelected(this.value)"
+        });) *@
+
+        <input type="hidden" asp-for="CandidateId" class="form-control" />
+        <span asp-validation-for="CandidateId" class="text-danger"></span>
+
+        <br />
+
+        <input type="submit" value="Update Degree" class="btn btn-primary" />
+
+    </form>
+</div>
+
+
+<div>
+    <a asp-controller="Degree" asp-action="Index">Back to overview</a>
+</div>
